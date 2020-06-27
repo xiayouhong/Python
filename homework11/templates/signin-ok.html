@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>{{ username }}的选课主页</title>
+     <style type="text/css">
+        table
+        {
+            border-collapse: collapse;
+            text-align: center;
+            table-layout: fixed;
+            width: 1500px;
+        }
+        table td, table th
+        {
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 30px;
+        }
+        table thead th
+        {
+            background-color: #CCE8EB;
+            width: 250x;
+        }
+        table tr:nth-child(odd)
+        {
+            background: #fff;
+        }
+        table tr:nth-child(even)
+        {
+            background: #F5FAFA;
+        }
+    </style>
+</head>
+<body>
+ {#网页的标题#}
+<div align="center"; style="width: 100%; height: 15px">
+    <h1>{{ username }}的选课主页<font size="2"></font></h1>
+    <p align="right"> 学号: {{ stu_id }}</p>
+    <p align="right"><a href="{{ url_for('main',stu_id=stu_id)}}">我的课表</a></p>
+    <p align="right"><a href="http://127.0.0.1:5000/signin">退出登录</a></p>
+    <p> </p>
+    <table width="100%"
+           border="1"
+           cellpadding="30">
+        <thead>
+        <th>课程编号</th>
+        <th>课程名</th>
+        <th>课程时间</th>
+        <th>已选人数</th>
+        <th>是否选中</th>
+        <th>操作</th>
+        </thead>
+        <tbody>
+
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject[0] }}</td>
+                <td>{{ subject[1] }}</td>
+                <td>{{ subject[2] }}</td>
+                <td>{{ subject[3] }}</td>
+                <td>{{ subject[4] }}</td>
+                <td><a href=" {{ url_for('select',stu_id=stu_id,sub_id=subject[0])}}">选课</a>|<a
+                        href="{{ url_for('notselect',stu_id=stu_id,sub_id=subject[0])}}">退选</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

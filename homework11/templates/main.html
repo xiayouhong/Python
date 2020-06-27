@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选课主页</title>
+</head>
+<body>
+<div align="center"; style="width: 100%; height: 15px">
+     <h1>{{ username }}的课程表<font size="2"></font></h1>
+     <table width="100%"
+           border="1"
+           cellpadding="30">
+        <thead>
+        <th>学生学号</th>
+        <th>周一</th>
+        <th>周二</th>
+        <th>周三</th>
+        <th>周四</th>
+        <th>周五</th>
+        <th>周六</th>
+        <th>周日</th>
+        </thead>
+        <tbody>
+
+        {% for i in timetable %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.mon }}</td>
+                <td>{{ i.tue }}</td>
+                <td>{{ i.wed }}</td>
+                <td>{{ i.thu }}</td>
+                <td>{{ i.fri }}</td>
+                <td>{{ i.sat }}</td>
+                <td>{{ i.sun }}</td>
+                     </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
